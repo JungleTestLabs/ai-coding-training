@@ -1,0 +1,8 @@
+
+# 忽略项
+.claude/
+node_modules/
+__pycache__/
+*.pyc
+.env
+.DS_Store
