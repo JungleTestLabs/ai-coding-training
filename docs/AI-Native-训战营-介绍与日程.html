@@ -1,239 +1,236 @@
-     1|<!DOCTYPE html>
-     2|<html lang="zh-CN">
-     3|<head>
-     4|<meta charset="UTF-8">
-     5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
-     6|<title>AI Native 实战训战营 V2</title>
-     7|<style>
-     8|* { margin:0; padding:0; box-sizing:border-box; }
-     9|body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #e8ecf1; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
-    10|.presentation { max-width: 960px; width: 100%; }
-    11|.slide { background: #ffffff; border-radius: 16px; padding: 44px 52px 36px; margin-bottom: 28px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); min-height: 520px; position: relative; }
-    12|.slide-num { position: absolute; top: 20px; right: 28px; font-size: 12px; color: #94a3b8; font-weight: 500; }
-    13|h1 { font-size: 36px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
-    14|h1 .accent { color: #2563eb; }
-    15|.sub { font-size: 15px; color: #64748b; margin-bottom: 24px; }
-    16|h2 { font-size: 22px; font-weight: 700; color: #1a1a2e; padding-bottom: 10px; border-bottom: 3px solid #2563eb; margin-bottom: 20px; }
-    17|h3 { font-size: 14px; font-weight: 600; color: #334155; margin: 14px 0 8px; }
-    18|p, li { font-size: 13px; color: #475569; line-height: 1.6; }
-    19|.meta { font-size: 11px; color: #94a3b8; }
-    20|.cards { display: flex; gap: 14px; margin: 12px 0; }
-    21|.card { flex: 1; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; }
-    22|.card h4 { font-size: 13px; font-weight: 600; color: #1e293b; margin-bottom: 4px; }
-    23|.card p { font-size: 11px; color: #64748b; line-height: 1.5; }
-    24|.card.c-blue { background: #eff6ff; border-color: #bfdbfe; }
-    25|.card.c-green { background: #f0fdf4; border-color: #bbf7d0; }
-    26|.card.c-orange { background: #fff7ed; border-color: #fed7aa; }
-    27|.card.c-purple { background: #faf5ff; border-color: #e9d5ff; }
-    28|.tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 10px; font-weight: 600; margin-right: 4px; margin-bottom: 4px; }
-    29|.tag-blue { background: #eff6ff; color: #2563eb; }
-    30|.tag-green { background: #f0fdf4; color: #16a34a; }
-    31|.tag-purple { background: #faf5ff; color: #7c3aed; }
-    32|.twocol { display: flex; gap: 20px; }
-    33|.twocol > div { flex: 1; }
-    34|table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 10px 0; }
-    35|th { background: #f1f5f9; color: #475569; font-weight: 600; padding: 8px 10px; text-align: left; font-size: 11px; }
-    36|td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; color: #334155; }
-    37|.hl { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
-    38|.hl p { font-size: 12px; color: #1e40af; margin: 2px 0; }
-    39|.timeline { display: flex; gap: 6px; margin: 8px 0; flex-wrap: wrap; }
-    40|.tl { flex: 1; min-width: 80px; border-radius: 8px; padding: 10px 8px; text-align: center; border: 1px solid #e2e8f0; }
-    41|.tl.l { background: #eff6ff; border-color: #bfdbfe; }
-    42|.tl.w { background: #fff7ed; border-color: #fed7aa; }
-    43|.tl.d { background: #faf5ff; border-color: #e9d5ff; }
-    44|.tl .tt { font-size: 12px; font-weight: 700; color: #1e293b; margin-bottom: 2px; }
-    45|.tl .tm { font-size: 10px; color: #64748b; }
-    46|.lbar { display: flex; gap: 8px; margin: 10px 0; }
-    47|.lb { flex: 1; border-radius: 10px; padding: 10px 6px; text-align: center; }
-    48|.lb .ln { font-size: 11px; font-weight: 700; color: #2563eb; }
-    49|.lb .lt { font-size: 10px; color: #334155; }
-    50|.lb .ld { font-size: 9px; color: #94a3b8; }
-    51|</style>
-    52|</head>
-    53|<body>
-    54|<div class="presentation">
-    55|
-    56|<!-- SLIDE 1 -->
-    57|<div class="slide"><div class="slide-num">1/6</div>
-    58|<div style="margin-bottom:10px;">
-    59|  <span class="tag tag-blue">2天 L1-L6体系</span>
-    60|  <span class="tag tag-purple">上午讲座 下午演示+演练</span>
-    61|  <span class="tag tag-green">终端 鸿蒙 计算</span>
-    62|</div>
-    63|<h1>AI Native <span class="accent">实战训战营 V2</span></h1>
-    64|<p class="sub">上午 9:30-12:00 讲座 | 下午 14:30-18:00 演示+演练 | L4: 增量开发与重构</p>
-    65|<div class="hl"><p><strong>训前(1.5h):</strong> Prompt基础 + LLM概念 + Claude Code安装 → 课堂不讲基础</p></div>
-    66|<div class="cards">
-    67|  <div class="card c-blue"><h4>Day 1 范式+架构+推演</h4><p>上午 L1+L2 讲座(到12:00)<br>下午 L1+L2演示 · W1练手<br>L3 Live Coding · 回顾</p></div>
-    68|  <div class="card c-green"><h4>Day 2 案例+最佳实践</h4><p>上午 L4增量开发+L5实践 讲座<br>下午 W2增量重构(在L4后)<br>W3项目 · 评审 · L6</p></div>
-    69|  <div class="card c-purple"><h4>设计原则</h4><p>上午纯讲座(不超过12:00)<br>下午先演示后演练<br>Workshop紧跟对应模块</p></div>
-    70|</div>
-    71|</div>
-    72|
-    73|<!-- SLIDE 2 -->
-    74|<div class="slide"><div class="slide-num">2/6</div>
-    75|<h2>L1-L6 知识体系 + 两天全览</h2>
-    76|<div class="lbar">
-    77|  <div class="lb" style="background:#eff6ff;border:1px solid #bfdbfe;"><div class="ln">L1</div><div class="lt">范式</div><div class="ld">60min</div></div>
-    78|  <div class="lb" style="background:#eff6ff;border:1px solid #bfdbfe;"><div class="ln">L2</div><div class="lt">Agent架构</div><div class="ld">60min</div></div>
-    79|  <div class="lb" style="background:#eff6ff;border:1px solid #bfdbfe;"><div class="ln">L3</div><div class="lt">全流程</div><div class="ld">60min</div></div>
-    80|  <div class="lb" style="background:#f0fdf4;border:1px solid #bbf7d0;"><div class="ln">L4</div><div class="lt">增量重构</div><div class="ld">75min</div></div>
-    81|  <div class="lb" style="background:#faf5ff;border:1px solid #e9d5ff;"><div class="ln">L5</div><div class="lt">最佳实践</div><div class="ld">50min</div></div>
-    82|  <div class="lb" style="background:#faf5ff;border:1px solid #e9d5ff;"><div class="ln">L6</div><div class="lt">落地</div><div class="ld">20min</div></div>
-    83|</div>
-    84|
-    85|<div class="twocol">
-    86|<div>
-    87|  <h3>Day 1: 范式+架构+推演</h3>
-    88|  <div class="tl l"><div class="tt">上午 讲座</div><div class="tm">9:30-12:00</div>L1范式(60m)+L2架构(60m)</div>
-    89|  <div class="tl w" style="margin-top:6px;"><div class="tt">下午 演示+演练</div><div class="tm">14:30-18:00</div>L1+L2演示(45m) · W1练手(60m) · L3 Live(60m) · 回顾(20m)</div>
-    90|</div>
-    91|<div>
-    92|  <h3>Day 2: 案例+最佳实践</h3>
-    93|  <div class="tl l"><div class="tt">上午 讲座</div><div class="tm">9:30-11:50</div>L4增量重构(75m)+L5实践(50m)</div>
-    94|  <div class="tl w" style="margin-top:6px;"><div class="tt">下午 演练</div><div class="tm">14:30-18:00</div>W2迁移(75m) · W3项目(60m) · 评审(30m) · L6(20m)</div>
-    95|</div>
-    96|</div>
-    97|
-    98|<table style="margin-top:14px;">
-    99|<tr><th></th><th>Day 1</th><th>Day 2</th></tr>
-   100|<tr><td style="font-weight:600;">讲座(上午)</td><td>L1+L2 (120min)</td><td>L4+L5 (125min)</td></tr>
-   101|<tr><td style="font-weight:600;">演示(下午)</td><td>L1+L2 Demo + L3 Live (105min)</td><td>—</td></tr>
-   102|<tr><td style="font-weight:600;">演练(下午)</td><td>W1 练手 (60min)</td><td>W2 重构 + W3 项目 (135min)</td></tr>
-   103|<tr><td style="font-weight:600;">收尾</td><td>回顾 (20min)</td><td>评审 + L6总结 (50min)</td></tr>
-   104|</table>
-   105|<p class="meta" style="margin-top:8px;">训前自学(1.5h): Prompt基础 + LLM概念 + Claude Code安装</p>
-   106|</div>
-   107|
-   108|<!-- SLIDE 3 -->
-   109|<div class="slide"><div class="slide-num">3/6</div>
-   110|<h2>Day 1 详细日程</h2>
-   111|
-   112|<h3>上午 讲座 (9:30-12:00)</h3>
-   113|<table>
-   114|<tr><th style="width:10%">时间</th><th style="width:32%">环节</th><th>内容</th></tr>
-   115|<tr><td>09:30</td><td>开场+破冰</td><td>痛点便签墙 · 场景代入</td></tr>
-   116|<tr><td>09:45</td><td><strong>L1: AI Native范式 (60min)</strong></td><td>三层模型 · SDD融合 · 12模块数据冲击 · CRISPE速讲</td></tr>
-   117|<tr><td>10:45</td><td>休息 (15min)</td><td></td></tr>
-   118|<tr><td>11:00</td><td><strong>L2: Agent/Claude架构 (60min)</strong></td><td>四层架构 · Token全景 · Skills机制 · 选型指南</td></tr>
-   119|</table>
-   120|
-   121|<h3>下午 演示+演练 (14:30-18:00)</h3>
-   122|<table>
-   123|<tr><th style="width:10%">时间</th><th style="width:32%">环节</th><th>内容</th></tr>
-   124|<tr style="background:#eff6ff;"><td>14:30</td><td><strong>L1+L2 演示 (45min)</strong></td><td>L1: 传统vs AI Native对比 · L2: /tokens /compact现场操作</td></tr>
-   125|<tr><td>15:15</td><td>休息 (15min)</td><td></td></tr>
-   126|<tr style="background:#fff7ed;"><td>15:30</td><td><strong>Workshop 1: 练手 (60min)</strong></td><td>环境搭建 · CLAUDE.md+Skill · 首次AI代码修改</td></tr>
-   127|<tr><td>16:30</td><td>休息 (10min)</td><td></td></tr>
-   128|<tr style="background:#eff6ff;"><td>16:40</td><td><strong>L3 Live Coding (60min)</strong></td><td>完整演示[加单位换算] Spec→Code 全程不剪辑</td></tr>
-   129|<tr><td>17:40</td><td>Day1回顾+Q&A (20min)</td><td>知识点快闪 · 收集疑问</td></tr>
-   130|</table>
-   131|</div>
-   132|
-   133|<!-- SLIDE 4 -->
-   134|<div class="slide"><div class="slide-num">4/6</div>
-   135|<h2>Day 2 详细日程</h2>
-   136|
-   137|<h3>上午 讲座 (9:30-11:50)</h3>
-   138|<table>
-   139|<tr><th style="width:10%">时间</th><th style="width:35%">环节</th><th>内容</th></tr>
-   140|<tr><td>09:30</td><td><strong>L4: 增量开发与重构 (75min)</strong></td><td>增量开发场景 · AID增量流程 · 重构三原则 · 真实案例数据</td></tr>
-   141|<tr><td>10:45</td><td>休息 (15min)</td><td></td></tr>
-   142|<tr><td>11:00</td><td><strong>L5: 工程最佳实践 (50min)</strong></td><td>效率(70/30法则) · 质量(审查清单) · 安全(三重门禁) · 决策矩阵</td></tr>
-   143|</table>
-   144|
-   145|<h3>下午 演练 (14:30-18:00)</h3>
-   146|<table>
-   147|<tr><th style="width:10%">时间</th><th style="width:35%">环节</th><th>内容</th></tr>
-   148|<tr style="background:#fff7ed;"><td>14:30</td><td><strong>Workshop 2: 增量重构 (75min)</strong></td><td>A组(AI全量重写)/B组(AI增量修改)/C组(手工重构+AI辅助) 策略对比</td></tr>
-   149|<tr><td>15:45</td><td>休息 (15min)</td><td></td></tr>
-   150|<tr style="background:#fff7ed;"><td>16:00</td><td><strong>Workshop 3: 端到端项目 (60min)</strong></td><td>三档自选: 小费计算器/历史搜索/程序员模式 AID流程</td></tr>
-   151|<tr style="background:#faf5ff;"><td>17:00</td><td><strong>方案对比+同行评审 (30min)</strong></td><td>W2+W3优秀成果展示 · 审查清单评审</td></tr>
-   152|<tr><td>17:30</td><td><strong>L6: 落地策略+总结 (20min)</strong></td><td>8项资产 · Token三步法 · 30天路线 · 痛点回顾</td></tr>
-   153|<tr style="background:#f0fdf4;"><td>17:50</td><td>开放空间</td><td>自由交流 · 一对一答疑</td></tr>
-   154|</table>
-   155|</div>
-   156|
-   157|<!-- SLIDE 5 -->
-   158|<div class="slide"><div class="slide-num">5/6</div>
-   159|<h2>L1-L6 模块详解 + 交付物</h2>
-   160|<div class="cards" style="flex-wrap:wrap;">
-   161|  <div class="card c-blue" style="min-width:30%;"><h4>L1: AI Native范式 (60min)</h4><p>三层范式演进 · 三角色模型 · SDD+AI融合 · CRISPE速讲 · 12模块数据</p></div>
-   162|  <div class="card c-blue" style="min-width:30%;"><h4>L2: Agent/Claude架构 (60min)</h4><p>四层架构 · Token全景 · /compact · Skills三原则 · 选型指南</p></div>
-   163|  <div class="card c-blue" style="min-width:30%;"><h4>L3: 全流程推演 (60min)</h4><p>Live Coding完整演示 · 一句话需求→代码 · Spec-as-Code · 4项验收</p></div>
-   164|  <div class="card c-green" style="min-width:30%;"><h4>L4: 增量开发与重构 (75min)</h4><p>真实项目 · Skill四原则 · 6条迁移铁律 · Token优化历程 · 反面教材</p></div>
-   165|  <div class="card c-purple" style="min-width:30%;"><h4>L5: 工程最佳实践 (50min)</h4><p>70/30法则 · 7+3审查清单 · 三重门禁 · 决策矩阵</p></div>
-   166|  <div class="card c-purple" style="min-width:30%;"><h4>L6: 落地策略 (20min)</h4><p>8项资产 · Token三步法 · 30天路线 · 团队推行</p></div>
-   167|</div>
-   168|
-   169|<div class="twocol" style="margin-top:16px;">
-   170|<div>
-   171|  <h3>核心交付物</h3>
-   172|  <table>
-   173|  <tr><th>#</th><th>交付物</th></tr>
-   174|  <tr><td>1</td><td>AI开发心智模型图</td></tr><tr><td>2</td><td>Skill模板仓库</td></tr>
-   175|  <tr><td>3</td><td>AI代码审查清单 (7+3)</td></tr><tr><td>4</td><td>CLAUDE.md模板</td></tr>
-   176|  <tr><td>5</td><td>Token优化速查卡</td></tr><tr><td>6</td><td>Prompt模板集</td></tr>
-   177|  <tr><td>7</td><td>AID工作流一页纸</td></tr><tr><td>8</td><td>30天学习路线图</td></tr>
-   178|  </table>
-   179|</div>
-   180|<div>
-   181|  <h3>3个 Workshop</h3>
-   182|  <div class="card c-orange"><h4>W1: 环境搭建+练手</h4><p>Day1下午 60min<br>Claude Code安装 · CLAUDE.md+Skill</p></div>
-   183|  <div class="card c-orange"><h4>W2: 增量重构实操</h4><p>Day2下午 75min (在L4后)<br>A/B/C三组不同策略 限时增量/重构</p></div>
-   184|  <div class="card c-orange"><h4>W3: 端到端项目</h4><p>Day2下午 60min<br>三档自选 · 完整AID流程 · 同行评审</p></div>
-   185|</div>
-   186|</div>
-   187|</div>
-   188|
-   189|<!-- SLIDE 6 -->
-   190|<div class="slide"><div class="slide-num">6/6</div>
-   191|<h2>两天节奏 + 关键数字</h2>
-   192|
-   193|<div class="twocol">
-   194|<div>
-   195|  <h3>Day 1 节奏</h3>
-   196|  <table>
-   197|  <tr><th>时间</th><th>环节</th><th>时长</th></tr>
-   198|  <tr><td>09:30</td><td>开场</td><td>-</td></tr>
-   199|  <tr style="background:#eff6ff;"><td>09:45</td><td>L1 讲座</td><td>60m</td></tr>
-   200|  <tr><td>10:45</td><td>休息</td><td>-</td></tr>
-   201|  <tr style="background:#eff6ff;"><td>11:00</td><td>L2 讲座</td><td>60m</td></tr>
-   202|  <tr><td>12:00</td><td>午餐</td><td>-</td></tr>
-   203|  <tr style="background:#eff6ff;"><td>14:30</td><td>L1+L2演示</td><td>45m</td></tr>
-   204|  <tr style="background:#fff7ed;"><td>15:30</td><td>W1 练手</td><td>60m</td></tr>
-   205|  <tr style="background:#eff6ff;"><td>16:40</td><td>L3 Live</td><td>60m</td></tr>
-   206|  <tr style="background:#faf5ff;"><td>17:40</td><td>回顾</td><td>20m</td></tr>
-   207|  </table>
-   208|</div>
-   209|<div>
-   210|  <h3>Day 2 节奏</h3>
-   211|  <table>
-   212|  <tr><th>时间</th><th>环节</th><th>时长</th></tr>
-   213|  <tr style="background:#f0fdf4;"><td>09:30</td><td>L4 讲座</td><td>75m</td></tr>
-   214|  <tr><td>10:45</td><td>休息</td><td>-</td></tr>
-   215|  <tr style="background:#faf5ff;"><td>11:00</td><td>L5 讲座</td><td>50m</td></tr>
-   216|  <tr style="background:#fff7ed;"><td>14:30</td><td>W2 重构</td><td>75m</td></tr>
-   217|  <tr style="background:#fff7ed;"><td>16:00</td><td>W3 项目</td><td>60m</td></tr>
-   218|  <tr style="background:#faf5ff;"><td>17:00</td><td>评审</td><td>30m</td></tr>
-   219|  <tr style="background:#faf5ff;"><td>17:30</td><td>L6总结</td><td>20m</td></tr>
-   220|  </table>
-   221|</div>
-   222|</div>
-   223|
-   224|<h3 style="margin-top:20px;">关键数字</h3>
-   225|<table>
-   226|<tr><th>指标</th><th>数值</th><th>指标</th><th>数值</th></tr>
-   227|<tr><td>总时长</td><td>2天 ~11h</td><td>讲座占比</td><td>~40% (上午)</td></tr>
-   228|<tr><td>演示总长</td><td>105min</td><td>演练总长</td><td style="color:#16a34a;font-weight:700;">195min (3 Workshop)</td></tr>
-   229|<tr><td>L1-L6模块</td><td>6个 系统化</td><td>交付物</td><td>8项可复用</td></tr>
-   230|<tr><td>上午讲座</td><td>不超过12:00</td><td>演示+演练</td><td>下午进行</td></tr>
-   231|</table>
-   232|
-   233|<div class="hl" style="margin-top:14px;"><p><strong>上午讲座(到12:00) · 下午先演示后演练 · Workshop紧跟对应模块</strong></p></div>
-   234|</div>
-   235|
-   236|</div>
-   237|</body>
-   238|</html>
-   239|
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Native 实战训战营 V2</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #e8ecf1; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+.presentation { max-width: 960px; width: 100%; }
+.slide { background: #ffffff; border-radius: 16px; padding: 44px 52px 36px; margin-bottom: 28px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); min-height: 520px; position: relative; }
+.slide-num { position: absolute; top: 20px; right: 28px; font-size: 12px; color: #94a3b8; font-weight: 500; }
+h1 { font-size: 36px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+h1 .accent { color: #2563eb; }
+.sub { font-size: 15px; color: #64748b; margin-bottom: 24px; }
+h2 { font-size: 22px; font-weight: 700; color: #1a1a2e; padding-bottom: 10px; border-bottom: 3px solid #2563eb; margin-bottom: 20px; }
+h3 { font-size: 14px; font-weight: 600; color: #334155; margin: 14px 0 8px; }
+p, li { font-size: 13px; color: #475569; line-height: 1.6; }
+.meta { font-size: 11px; color: #94a3b8; }
+.cards { display: flex; gap: 14px; margin: 12px 0; }
+.card { flex: 1; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; }
+.card h4 { font-size: 13px; font-weight: 600; color: #1e293b; margin-bottom: 4px; }
+.card p { font-size: 11px; color: #64748b; line-height: 1.5; }
+.card.c-blue { background: #eff6ff; border-color: #bfdbfe; }
+.card.c-green { background: #f0fdf4; border-color: #bbf7d0; }
+.card.c-orange { background: #fff7ed; border-color: #fed7aa; }
+.card.c-purple { background: #faf5ff; border-color: #e9d5ff; }
+.tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 10px; font-weight: 600; margin-right: 4px; margin-bottom: 4px; }
+.tag-blue { background: #eff6ff; color: #2563eb; }
+.tag-green { background: #f0fdf4; color: #16a34a; }
+.tag-purple { background: #faf5ff; color: #7c3aed; }
+.twocol { display: flex; gap: 20px; }
+.twocol > div { flex: 1; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 10px 0; }
+th { background: #f1f5f9; color: #475569; font-weight: 600; padding: 8px 10px; text-align: left; font-size: 11px; }
+td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+.tl { flex: 1; min-width: 80px; border-radius: 8px; padding: 10px 8px; text-align: center; border: 1px solid #e2e8f0; }
+.tl.l { background: #eff6ff; border-color: #bfdbfe; }
+.tl.w { background: #fff7ed; border-color: #fed7aa; }
+.tl .tt { font-size: 12px; font-weight: 700; color: #1e293b; margin-bottom: 2px; }
+.tl .tm { font-size: 10px; color: #64748b; }
+.lbar { display: flex; gap: 8px; margin: 10px 0; }
+.lb { flex: 1; border-radius: 10px; padding: 10px 6px; text-align: center; }
+.lb .ln { font-size: 11px; font-weight: 700; color: #2563eb; }
+.lb .lt { font-size: 10px; color: #334155; }
+.lb .ld { font-size: 9px; color: #94a3b8; }
+.hl { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+.hl p { font-size: 12px; color: #1e40af; margin: 2px 0; }
+</style>
+</head>
+<body>
+<div class="presentation">
+
+<!-- SLIDE 1: Title -->
+<div class="slide"><div class="slide-num">1/6</div>
+<div style="margin-bottom:10px;">
+  <span class="tag tag-blue">2天 L1-L6体系</span>
+  <span class="tag tag-purple">上午讲座 下午演示+演练</span>
+  <span class="tag tag-green">终端 鸿蒙 计算</span>
+</div>
+<h1>AI Native <span class="accent">实战训战营 V2</span></h1>
+<p class="sub">上午 9:30-12:00 讲座 | 下午 14:30-18:00 演示+演练 | L4: 增量开发与重构</p>
+<div class="hl"><p><strong>训前(1.5h):</strong> Prompt基础 + LLM概念 + Claude Code安装 → 课堂不讲基础</p></div>
+<div class="cards">
+  <div class="card c-blue"><h4>Day 1 范式+架构+推演</h4><p>上午 L1+L2 讲座(到12:00)<br>下午 L1+L2演示 · W1练手<br>L3 Live Coding · 回顾</p></div>
+  <div class="card c-green"><h4>Day 2 增量开发+最佳实践</h4><p>上午 L4增量+L5实践 讲座<br>下午 W2增量重构(在L4后)<br>W3项目 · 评审 · L6</p></div>
+  <div class="card c-purple"><h4>设计原则</h4><p>上午纯讲座(不超过12:00)<br>下午先演示后演练<br>Workshop紧跟对应模块</p></div>
+</div>
+</div>
+
+<!-- SLIDE 2: Overview -->
+<div class="slide"><div class="slide-num">2/6</div>
+<h2>L1-L6 知识体系 + 两天全览</h2>
+<div class="lbar">
+  <div class="lb" style="background:#eff6ff;border:1px solid #bfdbfe;"><div class="ln">L1</div><div class="lt">范式</div><div class="ld">60min</div></div>
+  <div class="lb" style="background:#eff6ff;border:1px solid #bfdbfe;"><div class="ln">L2</div><div class="lt">Agent架构</div><div class="ld">60min</div></div>
+  <div class="lb" style="background:#eff6ff;border:1px solid #bfdbfe;"><div class="ln">L3</div><div class="lt">全流程</div><div class="ld">60min</div></div>
+  <div class="lb" style="background:#f0fdf4;border:1px solid #bbf7d0;"><div class="ln">L4</div><div class="lt">增量重构</div><div class="ld">75min</div></div>
+  <div class="lb" style="background:#faf5ff;border:1px solid #e9d5ff;"><div class="ln">L5</div><div class="lt">最佳实践</div><div class="ld">50min</div></div>
+  <div class="lb" style="background:#faf5ff;border:1px solid #e9d5ff;"><div class="ln">L6</div><div class="lt">落地</div><div class="ld">20min</div></div>
+</div>
+
+<div class="twocol">
+<div>
+  <h3>Day 1: 范式+架构+推演</h3>
+  <div class="tl l"><div class="tt">上午 讲座</div><div class="tm">9:30-12:00</div>L1范式(60m)+L2架构(60m)</div>
+  <div class="tl w" style="margin-top:6px;"><div class="tt">下午 演示+演练</div><div class="tm">14:30-18:00</div>L1+L2演示(45m) · W1练手(60m) · L3 Live(60m) · 回顾(20m)</div>
+</div>
+<div>
+  <h3>Day 2: 增量开发+最佳实践</h3>
+  <div class="tl l"><div class="tt">上午 讲座</div><div class="tm">9:30-11:50</div>L4增量重构(75m)+L5实践(50m)</div>
+  <div class="tl w" style="margin-top:6px;"><div class="tt">下午 演练</div><div class="tm">14:30-18:00</div>W2重构(75m) · W3项目(60m) · 评审(30m) · L6(20m)</div>
+</div>
+</div>
+
+<table style="margin-top:14px;">
+<tr><th></th><th>Day 1</th><th>Day 2</th></tr>
+<tr><td style="font-weight:600;">讲座(上午)</td><td>L1+L2 (120min)</td><td>L4+L5 (125min)</td></tr>
+<tr><td style="font-weight:600;">演示(下午)</td><td>L1+L2 Demo + L3 Live (105min)</td><td>—</td></tr>
+<tr><td style="font-weight:600;">演练(下午)</td><td>W1 练手 (60min)</td><td>W2 重构 + W3 项目 (135min)</td></tr>
+<tr><td style="font-weight:600;">收尾</td><td>回顾 (20min)</td><td>评审 + L6总结 (50min)</td></tr>
+</table>
+<p class="meta" style="margin-top:8px;">训前自学(1.5h): Prompt基础 + LLM概念 + Claude Code安装</p>
+</div>
+
+<!-- SLIDE 3: Day 1 Detail -->
+<div class="slide"><div class="slide-num">3/6</div>
+<h2>Day 1 详细日程</h2>
+
+<h3>上午 讲座 (9:30-12:00)</h3>
+<table>
+<tr><th style="width:10%">时间</th><th style="width:32%">环节</th><th>内容</th></tr>
+<tr><td>09:30</td><td>开场+破冰</td><td>痛点便签墙 · 场景代入</td></tr>
+<tr><td>09:45</td><td><strong>L1: AI Native范式 (60min)</strong></td><td>三层模型 · SDD融合 · 12模块数据冲击 · CRISPE速讲</td></tr>
+<tr><td>10:45</td><td>休息 (15min)</td><td></td></tr>
+<tr><td>11:00</td><td><strong>L2: Agent/Claude架构 (60min)</strong></td><td>四层架构 · Token全景 · Skills机制 · 选型指南</td></tr>
+</table>
+
+<h3>下午 演示+演练 (14:30-18:00)</h3>
+<table>
+<tr><th style="width:10%">时间</th><th style="width:32%">环节</th><th>内容</th></tr>
+<tr style="background:#eff6ff;"><td>14:30</td><td><strong>L1+L2 演示 (45min)</strong></td><td>L1: 传统vs AI Native对比 · L2: /tokens /compact现场操作</td></tr>
+<tr><td>15:15</td><td>休息 (15min)</td><td></td></tr>
+<tr style="background:#fff7ed;"><td>15:30</td><td><strong>Workshop 1: 练手 (60min)</strong></td><td>环境搭建 · CLAUDE.md+Skill · 首次AI代码修改</td></tr>
+<tr><td>16:30</td><td>休息 (10min)</td><td></td></tr>
+<tr style="background:#eff6ff;"><td>16:40</td><td><strong>L3 Live Coding (60min)</strong></td><td>完整演示[加单位换算] Spec→Code 全程不剪辑</td></tr>
+<tr><td>17:40</td><td>Day1回顾+Q&A (20min)</td><td>知识点快闪 · 收集疑问</td></tr>
+</table>
+</div>
+
+<!-- SLIDE 4: Day 2 Detail -->
+<div class="slide"><div class="slide-num">4/6</div>
+<h2>Day 2 详细日程</h2>
+
+<h3>上午 讲座 (9:30-11:50)</h3>
+<table>
+<tr><th style="width:10%">时间</th><th style="width:35%">环节</th><th>内容</th></tr>
+<tr><td>09:30</td><td><strong>L4: 增量开发与重构 (75min)</strong></td><td>增量开发场景 · AID增量流程 · 重构三原则 · 真实案例数据</td></tr>
+<tr><td>10:45</td><td>休息 (15min)</td><td></td></tr>
+<tr><td>11:00</td><td><strong>L5: 工程最佳实践 (50min)</strong></td><td>效率(70/30法则) · 质量(审查清单) · 安全(三重门禁) · 决策矩阵</td></tr>
+</table>
+
+<h3>下午 演练 (14:30-18:00)</h3>
+<table>
+<tr><th style="width:10%">时间</th><th style="width:35%">环节</th><th>内容</th></tr>
+<tr style="background:#fff7ed;"><td>14:30</td><td><strong>Workshop 2: 增量重构 (75min)</strong></td><td>A组(AI全量重写)/B组(AI增量修改)/C组(手工+AI) 策略对比</td></tr>
+<tr><td>15:45</td><td>休息 (15min)</td><td></td></tr>
+<tr style="background:#fff7ed;"><td>16:00</td><td><strong>Workshop 3: 端到端项目 (60min)</strong></td><td>三档自选: 小费计算器/历史搜索/程序员模式 AID流程</td></tr>
+<tr style="background:#faf5ff;"><td>17:00</td><td><strong>方案对比+同行评审 (30min)</strong></td><td>W2+W3优秀成果展示 · 审查清单评审</td></tr>
+<tr><td>17:30</td><td><strong>L6: 落地策略+总结 (20min)</strong></td><td>8项资产 · Token三步法 · 30天路线 · 痛点回顾</td></tr>
+<tr style="background:#f0fdf4;"><td>17:50</td><td>开放空间</td><td>自由交流 · 一对一答疑</td></tr>
+</table>
+</div>
+
+<!-- SLIDE 5: Modules + Deliverables -->
+<div class="slide"><div class="slide-num">5/6</div>
+<h2>L1-L6 模块详解 + 交付物</h2>
+<div class="cards" style="flex-wrap:wrap;">
+  <div class="card c-blue" style="min-width:29%;"><h4>L1: AI Native范式 (60min)</h4><p>三层范式演进 · 三角色模型 · SDD+AI融合 · CRISPE速讲 · 12模块数据冲击</p></div>
+  <div class="card c-blue" style="min-width:29%;"><h4>L2: Agent/Claude架构 (60min)</h4><p>四层架构 · Token全景 · /compact · Skills三原则 · 选型指南</p></div>
+  <div class="card c-blue" style="min-width:29%;"><h4>L3: 全流程推演 (60min)</h4><p>Live Coding完整演示 · 一句话需求→代码 · Spec-as-Code · 4项验收</p></div>
+  <div class="card c-green" style="min-width:29%;"><h4>L4: 增量开发与重构 (75min)</h4><p>增量开发场景 · AID增量流程 · 重构三原则 · 真实案例数据 · 反面教材</p></div>
+  <div class="card c-purple" style="min-width:29%;"><h4>L5: 工程最佳实践 (50min)</h4><p>70/30法则 · 7+3审查清单 · 三重门禁 · 决策矩阵</p></div>
+  <div class="card c-purple" style="min-width:29%;"><h4>L6: 落地策略 (20min)</h4><p>8项资产 · Token三步法 · 30天路线 · 团队推行</p></div>
+</div>
+
+<div class="twocol" style="margin-top:16px;">
+<div>
+  <h3>核心交付物</h3>
+  <table>
+  <tr><th>#</th><th>交付物</th></tr>
+  <tr><td>1</td><td>AI开发心智模型图</td></tr><tr><td>2</td><td>Skill模板仓库</td></tr>
+  <tr><td>3</td><td>AI代码审查清单 (7+3)</td></tr><tr><td>4</td><td>CLAUDE.md模板</td></tr>
+  <tr><td>5</td><td>Token优化速查卡</td></tr><tr><td>6</td><td>Prompt模板集</td></tr>
+  <tr><td>7</td><td>AID工作流一页纸</td></tr><tr><td>8</td><td>30天学习路线图</td></tr>
+  </table>
+</div>
+<div>
+  <h3>3个 Workshop</h3>
+  <div class="card c-orange"><h4>W1: 环境搭建+练手</h4><p>Day1下午 60min<br>Claude Code安装 · CLAUDE.md+Skill</p></div>
+  <div class="card c-orange"><h4>W2: 增量重构实操</h4><p>Day2下午 75min (在L4后)<br>A/B/C三组不同策略 限时增量/重构</p></div>
+  <div class="card c-orange"><h4>W3: 端到端项目</h4><p>Day2下午 60min<br>三档自选 · 完整AID流程 · 同行评审</p></div>
+</div>
+</div>
+</div>
+
+<!-- SLIDE 6: Rhythm + Key Numbers -->
+<div class="slide"><div class="slide-num">6/6</div>
+<h2>两天节奏 + 关键数字</h2>
+
+<div class="twocol">
+<div>
+  <h3>Day 1 节奏</h3>
+  <table>
+  <tr><th>时间</th><th>环节</th><th>时长</th></tr>
+  <tr><td>09:30</td><td>开场</td><td>-</td></tr>
+  <tr style="background:#eff6ff;"><td>09:45</td><td>L1 讲座</td><td>60m</td></tr>
+  <tr><td>10:45</td><td>休息</td><td>-</td></tr>
+  <tr style="background:#eff6ff;"><td>11:00</td><td>L2 讲座</td><td>60m</td></tr>
+  <tr><td>12:00</td><td>午餐</td><td>-</td></tr>
+  <tr style="background:#eff6ff;"><td>14:30</td><td>L1+L2演示</td><td>45m</td></tr>
+  <tr style="background:#fff7ed;"><td>15:30</td><td>W1 练手</td><td>60m</td></tr>
+  <tr style="background:#eff6ff;"><td>16:40</td><td>L3 Live</td><td>60m</td></tr>
+  <tr style="background:#faf5ff;"><td>17:40</td><td>回顾</td><td>20m</td></tr>
+  </table>
+</div>
+<div>
+  <h3>Day 2 节奏</h3>
+  <table>
+  <tr><th>时间</th><th>环节</th><th>时长</th></tr>
+  <tr style="background:#f0fdf4;"><td>09:30</td><td>L4 讲座</td><td>75m</td></tr>
+  <tr><td>10:45</td><td>休息</td><td>-</td></tr>
+  <tr style="background:#faf5ff;"><td>11:00</td><td>L5 讲座</td><td>50m</td></tr>
+  <tr style="background:#fff7ed;"><td>14:30</td><td>W2 重构</td><td>75m</td></tr>
+  <tr style="background:#fff7ed;"><td>16:00</td><td>W3 项目</td><td>60m</td></tr>
+  <tr style="background:#faf5ff;"><td>17:00</td><td>评审</td><td>30m</td></tr>
+  <tr style="background:#faf5ff;"><td>17:30</td><td>L6总结</td><td>20m</td></tr>
+  </table>
+</div>
+</div>
+
+<h3 style="margin-top:20px;">关键数字</h3>
+<table>
+<tr><th>指标</th><th>数值</th><th>指标</th><th>数值</th></tr>
+<tr><td>总时长</td><td>2天 ~11h</td><td>讲座占比</td><td>~40% (上午)</td></tr>
+<tr><td>演示总长</td><td>105min</td><td>演练总长</td><td style="color:#16a34a;font-weight:700;">195min (3 Workshop)</td></tr>
+<tr><td>L1-L6模块</td><td>6个 系统化</td><td>交付物</td><td>8项可复用</td></tr>
+<tr><td>上午讲座</td><td>不超过12:00</td><td>演示+演练</td><td>下午进行</td></tr>
+</table>
+
+<div class="hl" style="margin-top:14px;"><p><strong>上午讲座(到12:00) · 下午先演示后演练 · Workshop紧跟对应模块</strong></p></div>
+</div>
+
+</div>
+</body>
+</html>
